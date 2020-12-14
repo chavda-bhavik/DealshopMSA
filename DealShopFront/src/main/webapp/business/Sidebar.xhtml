@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <aside class="aside-container">
+            <div class="aside-inner">
+                <nav class="sidebar" data-sidebar-anyclick-close="">
+                    <h:form>
+                    <ul class="sidebar-nav">
+                        <li class=" ">
+                            <h:commandLink action="/business/Home.jsf?faces-redirect=true" title="Use Deals">
+                                <em class="icon-home"></em> Home
+                            </h:commandLink>
+                        </li>
+                        <li class=" ">
+                            <a href="#profile" title="Profile" data-toggle="collapse">
+                                <em class="icon-layers"></em>
+                                <span data-localize="sidebar.nav.DASHBOARD">Profile</span>
+                            </a>
+                            <ul class="sidebar-nav sidebar-subnav collapse" id="profile">
+                               <li class="sidebar-subnav-header">Profile</li>
+                               <li class=" "><h:commandLink action="/business/details.jsf?faces-redirect=true">Details</h:commandLink></li>
+                               <li class=" "><h:commandLink action="/business/photos.jsf?faces-redirect=true">Photos</h:commandLink></li>
+                               <li class=" "><h:commandLink action="/business/facilities.jsf?faces-redirect=true">Facilities</h:commandLink></li>
+                               <li class=" "><h:commandLink action="/business/links.jsf?faces-redirect=true">Links</h:commandLink></li>
+                            </ul>
+                        </li>
+                        <li class=" ">
+                            <a href="#deals" title="Deals" data-toggle="collapse">
+                                <em class="icon-chemistry"></em>
+                                <span data-localize="sidebar.nav.DASHBOARD">Deals</span>
+                            </a>
+                            <ul class="sidebar-nav sidebar-subnav collapse" id="deals">
+                               <li class="sidebar-subnav-header">Deals</li>
+                               <li class=" "><h:commandLink action="${bDealsBean.gotoAddDeal()}">Add Deal</h:commandLink></li>
+                               <li class=" "><h:commandLink action="/business/dealdetails.jsf?faces-redirect=true">Deal Details</h:commandLink></li>
+                               <li class=" "><h:commandLink action="/business/dealphotos.jsf?faces-redirect=true">Deal Photos</h:commandLink></li>
+                               <li class=" "><h:commandLink action="/business/deals.jsf?faces-redirect=true">Deals</h:commandLink></li>
+                            </ul>
+                        </li>
+<!--                        <li class=" ">
+                            <h:commandLink action="/business/liveDeals.jsf?faces-redirect=true" title="Manage State">
+                                <em class="icon-graph"></em> Live Deals
+                            </h:commandLink>
+                        </li>-->
+                        <li class=" ">
+                            <h:commandLink action="/business/UseDeals.jsf?faces-redirect=true" title="Use Deals">
+                                <em class="icon-grid"></em> Use Deals
+                            </h:commandLink>
+                        </li>
+                        <li class=" ">
+                            <h:commandLink action="/business/SoldDeals.jsf?faces-redirect=true" title="Sold Deals">
+                                <em class="icon-check"></em> Sold Deals
+                            </h:commandLink>
+                        </li>
+                        <li class=" ">
+                            <h:commandLink action="/business/Reviews.jsf?faces-redirect=true" title="Reviews">
+                                <em class="icon-bubbles"></em> Reviews
+                            </h:commandLink>
+                        </li>
+                    </ul>
+                    </h:form>
+                </nav>
+            </div>
+        </aside>
+    </h:body>
+</html>
+

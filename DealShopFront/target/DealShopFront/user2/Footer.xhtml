@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:body>
+        <h:form>
+            <div class="main-footer padB50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="newsletter marB70">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <div class="row">
+                                    <h5>sign up for</h5>
+                                    <h3>newsletter</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                                <div class="row">
+                                    <div class="newsletter-bar">
+                                        <input type="text" placeholder="Enter E-mail address" />
+                                    </div>
+                                    <div class="submit">
+                                        <a href="#" class="itg-btn">submit</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+                                <div class="row">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest-square" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer-logo">
+                            <h:commandLink action="/user2/Home.jsf?faces-redirect=true" >
+                                <img src="resources/img/logo.png" alt="" />
+                            </h:commandLink>
+                            <p>
+                                DealShop is a way to enhance your shopping expierence with additional discounts and offers at your ease, anytime and anywhere.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <h4>information</h4>
+                        <p><h:commandLink action="/user2/Home.jsf?faces-redirect=true" value="Home" /></p>
+                        <p><h:commandLink action="/user2/Deals.jsf?faces-redirect=true" value="Deals" /></p>
+                        <p><h:commandLink action="/user2/Storelist.jsf?faces-redirect=true" value="Stores" /></p>
+                        <p><h:commandLink action="/user2/Offers.jsf?faces-redirect=true" value="Offers" /></p>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <h4>categories</h4>
+                        <ui:repeat value="#{dealsCategoryBean.categories}" var="category">
+                            <p>
+                                <h:commandLink action="#{dealsBean.showDealsByCategory(category.categoryID)}">
+                                    #{category.name}
+                                </h:commandLink>
+                            </p>
+                        </ui:repeat>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <h4>my account</h4>
+                        <p><h:commandLink value="My Deals" action="/user2/PurchasedDeals.jsf?faces-redirect=true" /></p>
+                        <p><h:commandLink value="Checkout" action="/user2/Checkout.jsf?faces-redirect=true" /></p>
+                        <p><h:commandLink value="Cart" action="/user2/UserDeals.jsf?faces-redirect=true" /></p>
+                        <p><h:commandLink value="Reviews" action="/user2/Reviews.jsf?faces-redirect=true" /></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="copyright-section">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p>
+                    <i class="fa fa-copyright" aria-hidden="true"></i>
+                    2020 DealShop - Latest Deals, Trends &amp; Offers at one place
+                </p>
+            </div>
+        </div>
+        </h:form>
+    </h:body>
+</html>
+

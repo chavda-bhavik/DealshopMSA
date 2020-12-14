@@ -1,0 +1,16 @@
+com\mycompany\commonmsa\config\BootStrap.class
+com\mycompany\commonmsa\config\CrossOriginResourceSharingFilter.class
+com\mycompany\commonmsa\entity\Statetb.class
+com\mycompany\commonmsa\entity\Citytb.class
+model\CityModel.class
+com\mycompany\commonmsa\entity\Businesscategorytb_.class
+com\mycompany\commonmsa\service\ExampleService.class
+model\StateModel.class
+com\mycompany\commonmsa\entity\Statetb_.class
+com\mycompany\commonmsa\entity\Businesscategorytb.class
+com\mycompany\commonmsa\service\StateService.class
+com\mycompany\commonmsa\service\HealthCheckService.class
+com\mycompany\commonmsa\entity\Citytb_.class
+com\mycompany\commonmsa\entity\Businesstypetb.class
+com\mycompany\commonmsa\config\Producers.class
+com\mycompany\commonmsa\entity\Businesstypetb_.class

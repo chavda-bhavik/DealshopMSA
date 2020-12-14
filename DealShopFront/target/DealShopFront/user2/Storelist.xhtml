@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                
+                    <!-- //***Breadcrumb-section Start***// -->
+                <div class="breadcrumb-section">
+                    <div class="breadcrumb-text">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="breadcrumb-text padTB100">
+                                        <h3><span>Stores</span></h3>
+                                        <ul class="breadcrumb-list">
+                                            <li><h:commandLink action="/user2/Home.jsf?faces-redirect=true" value="Home" /></li>
+                                            <li>Stores</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //***Breadcrumb-Section End***// -->
+                
+                <!-- //***Deals-Grid Start***// -->
+                <div class="deals bg padTB100">
+                    <div class="container">
+                        <div class="row">
+                            <ui:repeat var="store" value="${businessUserBean.businesses}">
+                                <div class="col-md-4 col-sm-4 col-xs-12 marB30">
+                                    <div class="box-a">
+                                        <figure>
+                                            <img src="resources/img/all/image1.jpg" alt="" />
+                                        </figure>
+                                        <div class="box-detail">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="row">
+                                                    <h4 class="hover marB20">
+                                                        <h:link outcome="/user2/Store.jsf?faces-redirect=true">
+                                                            <f:param value="${store.businessID}" name="store" />
+                                                            ${store.businessName}
+                                                        </h:link>
+                                                    </h4>
+                                                </div>
+                                            </div>
+<!--                                            <div class="col-md-4 col-sm-4 col-xs-5 text-right">
+                                                <div class="row">
+                                                    <ul class="stars">
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li><i class="fa fa-star"></i></li>
+                                                        <li class="grey-a"><i class="fa fa-star"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>-->
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="row">
+                                                    ${store.address}, ${store.cityID.name}, ${store.stateID.name}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border"></div>
+                                    </div>
+                                </div>
+
+                            </ui:repeat>
+                            
+<!--                            <div class="col-md-12 col-sm-12 col-xs-12 marT20">
+                                <div class="pagination-box text-center">
+                                    <a href="#"><span><i class="fa fa-arrow-left" aria-hidden="true"></i></span></a>
+                                    <a href="#"><span>1</span></a>
+                                    <a href="#"><span>2</span></a>
+                                    <a href="#"><span>3</span></a>
+                                    <a href="#"><span>4</span></a>
+                                    <a href="#"><span>5</span></a>
+                                    <a href="#"><span><i class="fa fa-arrow-right" aria-hidden="true"></i></span></a>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- //***Deals-Grid End***// -->
+                <div class="clear"></div>
+                
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

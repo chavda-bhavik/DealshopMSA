@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+              <h:form>
+                <div class="content-wrapper">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            Offers List
+                            <h:commandButton class="btn btn-primary float-right" value="Add Offer" action="${offersAdminBean.addOffer()}" />
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <b:dataTable value="${offersAdminBean.offers}" var="offer" responsive="true" style="width:100%">
+                                    <b:dataTableColumn label="Offer Name" value="${offer.name}" class="text-center" />
+                                    <b:dataTableColumn label="Code" value="${offer.code}" class="text-center" />
+                                    <b:dataTableColumn label="Issue Date" class="text-center" >
+                                        <h:outputText value="${offer.issueDate}" >
+                                            <f:converter converterId="DateConverter" />
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    
+                                    <b:dataTableColumn label="Due Date" class="text-center" >
+                                        <h:outputText value="${offer.dueDate}" >
+                                            <f:converter converterId="DateConverter" />
+                                        </h:outputText>
+                                    </b:dataTableColumn>
+                                    
+                                    <b:dataTableColumn label="Percent Off" value="${offer.percentOff}" class="text-center" />
+                                    <b:dataTableColumn label="Dollars Off" value="${offer.dollarsOff}" class="text-center" />
+                                    
+                                    <b:dataTableColumn label="Edit" class="text-center" >
+                                        <b:commandButton icon="edit"
+                                            action="${offersAdminBean.editOffer(offer.offerID)}" />
+                                    </b:dataTableColumn>
+                                    
+                                    <b:dataTableColumn label="Remove" class="text-center" >
+                                        <b:commandButton icon="remove"
+                                            action="${offersAdminBean.removeOffer(offer.offerID)}" />
+                                    </b:dataTableColumn>
+                                </b:dataTable>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

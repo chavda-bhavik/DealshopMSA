@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:define name="content">
+                <b:container>
+                    <b:row>
+                        <h1>Icons</h1>
+                    </b:row>
+                    <b:row>
+                        <h3>Default Icons</h3>
+                        <p>BootsFaces supports the default Icon set of Bootstrap <a href="http://getbootstrap.com/components/#glyphicons-glyphs">Glyphicons</a></p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="cloud" /> glyphicon-cloud<br/>
+                            <b:icon name="envelope" /> glyphicon-envelope<br/>
+                            <b:icon name="pencil" /> glyphicon-pencil<br/>
+                            <b:icon name="glass" /> glyphicon-glass<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Description">
+                                    <p>Using an icon in BootsFaces is very simple: just add a <code>&lt;b:icon&gt;</code> with a <code>name</code> attribute with the icon name (without the trailing <b>glyphicon-</b> prefix)</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="cloud" /> glyphicon-cloud<br/>
+                                    <b:icon name="envelope" /> glyphicon-envelope<br/>
+                                    <b:icon name="pencil" /> glyphicon-pencil<br/>
+                                    <b:icon name="glass" /> glyphicon-glass<br/>
+                                    ]]></script>
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Font Awesome Icon set</h3>
+                        <p>Since BootsFaces is born to help you design a wonderful website, we recognize that Icons are an important tool to achieve this goal and there are never enough:</p>
+                        <p>for this reason, BootsFaces now supports the <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> Icon set with its 519 icons.</p>
+                        <p>As you will see later, we also support most Awesome features, which will work with Glyphicon too!</p>
+                        
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
+                            <b:iconAwesome name="coffee" /> fa-coffee<br/>
+                            <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
+                            <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
+                            <b:iconAwesome name="group" /> fa-group<br/>
+                            <b:iconAwesome name="gamepad" /> fa-gamepad<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Font Awesome">
+                                    Adding a Font Awesome icon in BootsFaces is easy: use the <code>&lt;b:iconAwesome&gt;</code> tag with the icon name (without the trailing <b>fa-</b> prefix)
+                                </b:tab>
+                                <b:tab title="Markup">
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:iconAwesome name="camera-retro" /> fa-camera-retro<br/>
+                                    <b:iconAwesome name="coffee" /> fa-coffee<br/>
+                                    <b:iconAwesome name="futbol-o" /> fa-futbol-o<br/>
+                                    <b:iconAwesome name="heartbeat" /> fa-heartbeat<br/>
+                                    <b:iconAwesome name="group" /> fa-group<br/>
+                                    <b:iconAwesome name="gamepad" /> fa-gamepad
+                                    ]]></script>
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Icon Size</h3>
+                        <p>BootsFaces supports different sizes for the Icons.</p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:icon name="globe" size="lg" /> size="lg"<br/>
+                            <b:icon name="globe" size="2x" /> size="2x"<br/>
+                            <b:icon name="globe" size="3x" /> size="3x"<br/>
+                            <b:icon name="globe" size="4x" /> size="4x"<br/>
+                            <b:icon name="globe" size="5x" /> size="5x"<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Sizing">
+                                    <p>To increase icon sizes relative to their container, use the <code>size="lg"</code> (33% increase), <code>size="2x"</code>,
+                                    <code>size="3x"</code>, <code>size="4x"</code>, or <code>size="5x"</code> attributes.</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:icon name="globe" size="lg" /> size="lg"<br/>
+                                    <b:icon name="globe" size="2x" /> size="2x"<br/>
+                                    <b:icon name="globe" size="3x" /> size="3x"<br/>
+                                    <b:icon name="globe" size="4x" /> size="4x"<br/>
+                                    <b:icon name="globe" size="5x" /> size="5x"<br/>
+                                    ]]></script>
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Rotated and Flipped Icons</h3>
+                        <p>You can also rotate and flip your icons.</p>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:iconAwesome name="shield" /> normal<br/>
+                            <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+                            <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+                            <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
+                            <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)<br/>
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Rotate and Flip">
+                                    <p>To rotate or flip your icons, just use the <code>rotate="R"</code>, <code>rotate="L"</code> and <code>flip="H"</code>, <code>flip="V"</code> attributes respectively.</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:iconAwesome name="shield" /> normal<br/>
+                                    <b:iconAwesome name="shield" rotate="R" /> rotate="R" (right - 90 deg.)<br/>
+                                    <b:iconAwesome name="shield" rotate="L" /> rotate="L" (left - 270 deg.)<br/>
+                                    <b:iconAwesome name="shield" flip="H" /> flip="H" (horizontal)<br/>
+                                    <b:iconAwesome name="shield" flip="V" /> flip="V" (vertical)
+                                    ]]></script>
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <h3>Animated Icons </h3>
+                        <hr/>
+                    </b:row>
+                    <b:row>
+                        <b:column span="2">
+                            <b:iconAwesome name="spinner" spin="true" size="3x" />#{'   '}
+                            <b:iconAwesome name="circle-o-notch" spin="true" size="3x" />#{'   '}
+                            <b:iconAwesome name="refresh" spin="true" size="3x" />#{'   '}
+                            <b:iconAwesome name="cog" spin="true" size="3x" />
+                        </b:column>
+                        <b:column span="10">
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Spinning Icons">
+                                    <p>To let your icons spin, just add the <code>spin="true"</code> attribute.</p>
+                                </b:tab>
+                                <b:tab title="Markup">
+                                    <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                                    <![CDATA[
+                                    <b:iconAwesome name="spinner" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:iconAwesome name="circle-o-notch" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:iconAwesome name="refresh" spin="true" size="3x" />#{'#'}{'   '}
+                                    <b:iconAwesome name="cog" spin="true" size="3x" />
+                                    ]]></script>
+                                </b:tab>
+                            </b:tabView>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                            <h3>Configuring FontAwesome</h3>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column span="12">
+                        <p>By default, BootsFaces fetches FontAwesome 4.3.0 from a CDN (from <code>http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css</code>, to be precise).</p>
+                        <p>If you want to supress the automatical internet access for some reason, you've got several options. You can deactivate it globally in the web.xml, you can
+                        add a facet to the header of the JSF-view (which allows you to activate and deactivate the feature on a per-page basis) or you can simply include your own
+                        CSS import. If the file name contains the word <code>font-awesome</code> and ends with <code>.css</code>, BootsFaces won't try to load FontAwesome a second time.
+                        In most cases that's precisely what you need to do anyways, so you don't have to configure anything to deactivate the defaults.</p>
+                        <b:tabView>
+                        <b:tab title="web.xml (global deactivation)">
+                        <b:well>
+                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                           <![CDATA[
+<context-param>
+   <param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
+   <param-value>false</param-value>
+</context-param>
+                          ]]></script>
+                          </b:well>
+                        </b:tab>
+                        <b:tab title="header facet">
+                          <b:well>
+                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                           <![CDATA[
+    <h:head>
+		<f:facet name="no-fa">true</f:facet>
+    </h:head>
+    <h:body>
+	   ...
+	</h:body>
+                          ]]></script>
+                          </b:well>
+                        </b:tab>
+                        <b:tab title="manual import">
+                          <b:well>
+                           <script type="syntaxhighlighter" class="brush: xml; toolbar: false;first-line: 0">
+                           <![CDATA[
+        <h:outputStylesheet library="myLocalFontAwesome" name="font-awesome.css"></h:outputStylesheet>
+                          ]]></script>
+                          </b:well>
+                        </b:tab>
+                        </b:tabView>
+                        </b:column>
+                    </b:row>
+                    
+                <br/>
+                <h2>Reference section</h2>
+                <ui:include src="IconAttributes.xhtml" />
+                <ui:include src="IconAwesomeAttributes.xhtml" />
+                <b:panel look="info" rendered="false">
+					<f:facet name="heading">
+						<b>Skinning</b>
+					</f:facet>
+					<ul>
+						<li>Tell the world which CSS classes can be used to change the
+						look of the component.</li>
+					</ul>
+				</b:panel>
+                    
+                    <br/><br/><br/>
+                </b:container>
+                <script type="text/javascript">
+                    SyntaxHighlighter.all();
+                </script>
+            </ui:define>
+        </ui:composition>

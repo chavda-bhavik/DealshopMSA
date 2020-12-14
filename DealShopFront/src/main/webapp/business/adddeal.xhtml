@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                ${bDealsBean.fetchDealsData()}
+                <div class="content-wrapper" style="color:black !important;">
+                    <div class="card card-default" id="cardDemo14">
+                        <div class="card-header card-title">
+                            Add Deal
+                        </div>
+                        <div class="card-body">
+                            <c:if test="${bDealsBean.message != ''}">
+                                <b:alert severity="${bDealsBean.messageType}">
+                                    ${bDealsBean.message}
+                                </b:alert>
+                            </c:if>
+                            <h:form enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <b:inputText 
+                                                label="Deal Name"
+                                                class="form-control"
+                                                value="${bDealsBean.dealName}"
+                                                placeholder="Deal Name" id="name"
+                                                required="true" requiredMessage="Deal name is required"
+                                            />
+                                            <h:message for="name" class="text-danger" />
+                                        </div>  
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:datepicker 
+                                                label="Issue Date"
+                                                value="${bDealsBean.issueDate}"
+                                                placeholder="Issue Date"
+                                                id="issueDate" required="true"
+                                                requiredMessage="Issue Date are required" 
+                                            />
+                                            <h:message for="issueDate" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:datepicker 
+                                                label="Due Date"
+                                                value="${bDealsBean.dueDate}"
+                                                placeholder="Due Date"
+                                                id="dueDate" required="true"
+                                                requiredMessage="Due Date are required" 
+                                            />
+                                            <h:message for="dueDate" class="text-danger" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText 
+                                                label="Average Cost"
+                                                value="${bDealsBean.averageCost}" type="number" 
+                                                required="true" requiredMessage="Average Cost is required"
+                                                placeholder="Average Cost"
+                                                id="avgCost"
+                                                validatorMessage="Average Cost must be between 10 to 100000"
+                                            >
+                                                <f:validateLongRange minimum="10" maximum="100000"  />
+                                            </b:inputText>
+                                            <h:message for="avgCost" class="text-danger" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:selectOneMenu id="category" value="${bDealsBean.dealsCategory}" label="Deal Category">
+                                                <f:selectItem itemLabel="Deals Category" itemDisabled="true" itemValue="0" />
+                                                <f:selectItems value="#{bDealsBean.dcategories}" var="category" itemLabel="#{category.name}" itemValue="#{category.categoryID}"/>
+                                            </b:selectOneMenu>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+<!--                                            <p:fileUpload 
+                                                value="#bDealsBean.file}" mode="simple" 
+                                                skinSimple="true" id="bannerImage"
+                                            >
+                                                <f:validator validatorId="requiredAjaxValidator" />
+                                            </p:fileUpload>-->
+                                            <h:inputFile class="form-control" value="${bDealsBean.uploadedFile}" id="bannerImage" label="Banner Image" />
+<!--                                            <h:message for="bannerImage" class="text-danger" id="imageError" />-->
+                                            
+                                            <c:if test="#{bDealsBean.image != ''}">
+                                                <img src="/DealShop/assets/images/deals/${bDealsBean.image}" style="width: 200px; height:150px;" class="img-thumbnail" />
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <c:choose>
+                                    <c:when test="${session.getAttribute('businessstatus') != 2}">
+                                        <b:row>
+                                            <b:column>
+                                                <c:if test="${session.getAttribute('businessstatus') == '0'}">
+                                                    <b:alert severity="danger" title="Be sure!" value="You need to verify your business before you able to add your outlet." />
+                                                </c:if>
+                                                <c:if test="${session.getAttribute('businessstatus') == '1'}">
+                                                    <b:alert severity="info" title="Little patience!" value="We are verifying your business, be patience, keep checking your emails for updated." />
+                                                </c:if>
+                                            </b:column>
+                                        </b:row>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="form-group row">
+                                            <div class="col-xl-10">
+                                                <b:commandButton look="success" action="${bDealsBean.addDeal()}" value="Add" />
+                                                <b:commandButton look="danger" action="${bDealsBean.reset()}" value="Reset" />
+                                            </div>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                ${bDealsBean.resetAlert()}
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

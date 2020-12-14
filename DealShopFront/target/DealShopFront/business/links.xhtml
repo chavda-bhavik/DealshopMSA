@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                ${businessBean.getAllAndBusinessLinks()}
+                <div class="content-wrapper" style="color:black !important;">
+                    <div class="card card-default" id="cardDemo14">
+                        <div class="card-header card-title">
+                            Manage Business Links
+                        </div>
+                        <div class="card-body">
+                            <h:form>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Link for</label>
+                                            <h:selectOneMenu class="form-control" value="${businessBean.linkId}">
+                                                <f:selectItems var="link" value="${businessBean.allLinks}" itemLabel="${link.name}" itemValue="${link.linkID}" />
+                                            </h:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>Link Address</label>
+                                            <h:inputText class="form-control" id="linkAddr" value="${businessBean.linkAddress}" required="true" requiredMessage="Link Address is required" />
+                                            <h:message for="linkAddr" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h:commandButton class="btn btn-primary" value="Submit" action="${businessBean.submitLink()}" />
+                                    </div>
+                                </div>
+
+                                <dl class="my-3">
+                                    <p class="h4">Links</p>
+                                    <ui:repeat var="link" value="${businessBean.buLinks}">
+                                        <div class="row">
+                                            <dt class="col-2 text-right">${link.linkID.name}</dt>
+                                            <dd class="col">${link.link}</dd>
+                                        </div>
+                                    </ui:repeat>
+                                </dl>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

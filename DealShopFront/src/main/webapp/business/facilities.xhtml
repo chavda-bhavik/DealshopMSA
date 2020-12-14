@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                ${businessBean.getAllAndBusinessInfos()}
+                <div class="content-wrapper" style="color:black !important;">
+                    <div class="card card-default" id="cardDemo14">
+                        <div class="card-header card-title">
+                            Manage Business Information
+                        </div>
+                        <div class="card-body">
+                            <h:form>
+                                <div class="form-group">
+                                    <label class="title">Available Informations</label>
+                                    <h:selectManyListbox class="form-control" value="${businessBean.selectedInfos}">
+                                        <f:selectItems value="#{businessBean.allInfos}" var="info" itemLabel="#{info.title}" itemValue="#{info.informationID}"/>
+                                        <f:ajax event="change" listener="${businessBean.testChanged()}" />
+                                    </h:selectManyListbox>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h:commandButton class="btn btn-primary" value="Update" action="${businessBean.updateBusinessInformations()}"></h:commandButton>  
+                                    </div>
+                                </div>
+                                <div class="row p-4">
+                                    <ul>
+                                        <ui:repeat var="info" value="${businessBean.buInfos}">
+                                            <li>${info.title}</li>
+                                        </ui:repeat>
+                                    </ul>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">
+<!--    <jta-data-source>jdbc/dealshop</jta-data-source>-->
+    <class>com.mycompany.businessmsa.entity.Businesstb</class>
+    <class>com.mycompany.businessmsa.entity.Linkstb</class>
+    <class>com.mycompany.businessmsa.entity.Businessphotostb</class>
+    <class>com.mycompany.businessmsa.entity.Citytb</class>
+    <class>com.mycompany.businessmsa.entity.Usercategorytb</class>
+    <class>com.mycompany.businessmsa.entity.Informationtb</class>
+    <class>com.mycompany.businessmsa.entity.Businesscategorytb</class>
+    <class>com.mycompany.businessmsa.entity.Businesslinkstb</class>
+    <class>com.mycompany.businessmsa.entity.Businesstypetb</class>
+    <class>com.mycompany.businessmsa.entity.Usertb</class>
+    <class>com.mycompany.businessmsa.entity.Statetb</class>
+    <class>com.mycompany.businessmsa.entity.Businessinfotb</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dealshop"/>
+      <property name="javax.persistence.jdbc.user" value="power"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="power"/>
+    </properties>
+  </persistence-unit>
+</persistence>

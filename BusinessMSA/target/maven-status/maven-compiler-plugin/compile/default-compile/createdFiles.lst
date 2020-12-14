@@ -1,0 +1,5 @@
+com\mycompany\businessmsa\service\ExampleService.class
+com\mycompany\businessmsa\config\BootStrap.class
+com\mycompany\businessmsa\config\CrossOriginResourceSharingFilter.class
+com\mycompany\businessmsa\config\Producers.class
+com\mycompany\businessmsa\service\HealthCheckService.class

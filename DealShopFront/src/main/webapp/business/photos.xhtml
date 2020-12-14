@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <style>
+        .photo {
+            width: 100px !important;
+/*            height: 100px !important;*/
+        }
+    </style>
+    <h:body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                ${businessBean.getBusinessPhotos()}
+                <div class="content-wrapper" style="color:black !important;">
+                    <div class="card card-default" id="cardDemo14">
+                        <div class="card-header card-title">
+                            Manage Business Photos
+                        </div>
+                        <div class="card-body">
+                            <h:form enctype="multipart/form-data" id="asdf">
+                                <div class="row">
+                                    <div class="col-10">
+                                        <h:inputFile class="form-control" value="${businessBean.uploadedFile}" id="image"/>
+                                        <h:message class="text-danger" for="image" />
+<!--                                         required="true" requiredMessage="Select image to upload"-->
+                                    </div>
+                                    <div class="col-2">
+                                        <h:commandButton class="btn btn-primary btn-block" value="Add" action="${businessBean.uploadBusinessPhoto()}" />
+                                    </div>
+                                </div>
+<!--                            </h:form>
+                            <h:form>-->
+                                <div class="row my-3">
+                                    <ui:repeat var="photo" value="${businessBean.photos}" id="buphotos">
+                                        <div class="col-3">
+                                            <div class="profile-pic">
+                                                <img src="/DealShop/assets/images/business/${photo.photo}" />
+                                                <div class="edit">
+                                                    <h:commandLink action="${businessBean.removeBusinessPhoto(photo.photoID)}">
+                                                        <i class="icon-close"></i>
+                                                    </h:commandLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ui:repeat>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

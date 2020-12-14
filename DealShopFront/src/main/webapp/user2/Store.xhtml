@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                <f:event type="preRenderView" listener="#{businessUserBean.checkStoreAndRedirect()}" />
+                
+                <h:form>
+                
+                <!-- //***Breadcrumb-section Start***// -->
+                <div class="breadcrumb-section">
+                    <div class="breadcrumb-text">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="breadcrumb-text padTB100">
+                                        <h3><span>${businessUserBean.business.businessName}</span></h3>
+                                        <ul class="breadcrumb-list">
+                                            <li><h:commandLink action="/user2/Home.jsf?faces-redirect=true" value="Home" immediate="true" /></li>
+                                            <li><h:commandLink action="/user2/Storelist.jsf?faces-redirect=true" value="Stores" immediate="true" /></li>
+                                            <li>${businessUserBean.business.businessName}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //***Breadcrumb-Section End***// -->
+                </h:form>
+                
+                <!-- //***Deals-Single Start***// -->
+                <div class="deals bg padTB100">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-4 col-xs-12">
+                                <div class="awesome-spot">
+                                    <h3 class="capital marB10">${businessUserBean.business.businessName}</h3>
+                                    <p>${businessUserBean.business.address}</p>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 padL0">
+                                        <h4 class="capital">City</h4>
+                                        <p>${businessUserBean.business.cityID.name}</p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 padL0">
+                                        <h4 class="capital">State</h4>
+                                        <p>${businessUserBean.business.stateID.name}</p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 padL0">
+                                        <h4 class="capital">Deals</h4>
+                                        <p>${businessUserBean.deals.size()}</p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6 padL0">
+                                        <h4 class="capital">Reviews</h4>
+                                        <p>${businessUserBean.reviews.size()}</p>
+<!--                                        <p>{businessUserBean.business.reviewtbCollection.size() == null ? "0" : businessUserBean.business.reviewtbCollection.size()}</p>-->
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 padL0">
+                                        <h4 class="capital">Reservation No.</h4>
+                                        <p>${businessUserBean.business.reservationPhoneNo}</p>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 padL0">
+                                        <h4 class="capital">Customer Care No.</h4>
+                                        <p>${businessUserBean.business.customerCarePhoneNo}</p>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 marT10 marB10 padL0">
+                                        <div class="green ask-btn">
+                                            <h:link outcome="/user2/Deals.jsf?faces-redirect=true" value="View Deals">
+                                                <f:param name="store" value="${businessUserBean.business.businessID}" />
+                                            </h:link>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 padL0">
+                                        <h4 class="capital">Hours of Operation</h4>
+                                        <p>${businessUserBean.business.hoursOfOperation}</p>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12 padL0">
+                                        <h4 class="capital">Days of Operation</h4>
+                                        <p>${businessUserBean.business.daysOfOperation}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-sm-8 col-xs-12 pad10" style="background-color: #fff">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="blog marB30">
+                                            <div id="blog" class="owl-carousel owlCarousel">
+                                                <ui:repeat var="photo" value="${businessUserBean.photos}">
+                                                    <div class="item">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <figure>
+                                                                <img src="/DealShop/assets/images/business/${photo.photo}" alt="" style="width: 100%;height:400px;" />
+                                                            </figure>
+                                                        </div>
+                                                     </div>
+                                                </ui:repeat>
+                                            </div>
+                                        </div>
+                                        <h4 class="marT30">About ${businessUserBean.business.businessName}</h4>
+                                        <p><h:outputText value="#{businessUserBean.business.needToKnow}" escape="false" /></p>
+                                        
+                                        <h4 class="marT30">Awards &amp; Recognition</h4>
+                                        <p><h:outputText value="#{businessUserBean.business.awardsRecognition}" escape="false" /></p>
+                                        
+                                    </div>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div class="comments-area">
+                                            <h3 class="capital marT30 marB40">Reviews</h3>
+                                            <ui:repeat var="review" value="${businessUserBean.reviews}">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2">
+                                                        <figure>
+                                                            <img src="/DealShop/assets/images/others/comment-1.png" alt="Review Image" class="img-circle" />
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 marB30">
+                                                        <span class="green">${review.userID.name}:</span> &nbsp; ${review.title}
+                                                        <p>${review.rate} Stars</p>
+                                                        <p>${review.review}</p>
+                                                    </div>
+                                                </div>
+                                            </ui:repeat>
+                                        </div>
+                                    </div>
+                                    
+                                    <c:choose>
+                                        <c:when test="${loginBean.isUserLoggedIn()}">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 marT30">
+                                                <h:form id="reviewForm">
+                                                
+                                                    <div class="row">
+                                                    <div class="comments-form">
+                                                        <div class="coments col-md-12 col-sm-12 col-xs-12 marB30">
+                                                            <h3>add Review</h3>
+                                                        </div>
+
+                                                        <input type="hidden" name="businessId" value="${businessUserBean.business.businessID}" />
+
+                                                        <div class="col-md-9 col-sm-12 col-xs-12 marB30">
+                                                            <h:inputText 
+                                                                id="title" required="true"
+                                                                pt:placeholder="Title" value="${reviewBean.title}" 
+                                                                requiredMessage="Review title is required"
+                                                                />
+                                                            <h:message for="title" class="text-danger" />
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-12 col-xs-12 marB30">
+                                                            <h:selectOneMenu class="input-textarea" value="${reviewBean.rate}">
+                                                                <f:selectItem itemValue="1" itemLabel="1" />
+                                                                <f:selectItem itemValue="2" itemLabel="2" />
+                                                                <f:selectItem itemValue="3" itemLabel="3" />
+                                                                <f:selectItem itemValue="4" itemLabel="4" />
+                                                                <f:selectItem itemValue="5" itemLabel="5" />
+                                                            </h:selectOneMenu>
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12 marB30">
+                                                            <h:inputTextarea pt:placeholder="Review" rows="3" value="${reviewBean.review}" />
+                                                        </div>
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <h:commandButton class="itg-btn subcribes" value="Give Review" action="${reviewBean.giveReview()}"  />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                </h:form>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="col-md-12 col-sm-12 col-xs-12 marT10">
+                                                <div class="section-box cart-box">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <p>
+                                                            <i class="flaticon-blogger-logotype"></i>
+                                                            Login to give review
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 text-right marT5">
+                                                        <h:commandButton class="itg-btn cart-btn" action="${loginBean.goToLogin}" value="login" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //***Deals-Single End***// -->
+                
+                <div class="clear"></div>
+                
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,21 @@
+#!/bin/sh
+#deploy="false"
+deploy="true"
+
+image=DealShopFront
+version=1.0-SNAPSHOT
+latest=true
+
+#OPTIONS="--no-cache --force-rm"
+#OPTIONS="--no-cache"
+#OPTIONS="--force-rm"
+OPTIONS=""
+
+docker build ${OPTIONS} -t bhavikchavda/${image}:1.0-SNAPSHOT .
+if [ "$?" -eq 0 ] && [ ${deploy} == "true" ]; then
+    docker push bhavikchavda/${image}:1.0-SNAPSHOT
+    if [ "$latest" == "true" ]; then
+        docker tag bhavikchavda/${image}:1.0-SNAPSHOT bhavikchavda/${image}:latest
+        docker push bhavikchavda/${image}:latest
+    fi
+fi

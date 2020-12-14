@@ -1,0 +1,18 @@
+package com.mycompany.commonmsa.entity;
+
+import com.mycompany.commonmsa.entity.Businesstypetb;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.CollectionAttribute;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-12-14T10:13:31")
+@StaticMetamodel(Businesscategorytb.class)
+public class Businesscategorytb_ { 
+
+    public static volatile SingularAttribute<Businesscategorytb, String> image;
+    public static volatile CollectionAttribute<Businesscategorytb, Businesstypetb> businesstypetbCollection;
+    public static volatile SingularAttribute<Businesscategorytb, String> name;
+    public static volatile SingularAttribute<Businesscategorytb, Integer> categoryID;
+
+}

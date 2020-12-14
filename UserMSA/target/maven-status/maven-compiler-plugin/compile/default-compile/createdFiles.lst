@@ -1,0 +1,12 @@
+com\mycompany\usermsa\entity\Usertb_.class
+com\mycompany\usermsa\entity\Usercategorytb.class
+com\mycompany\usermsa\beans\TestBean.class
+com\mycompany\usermsa\service\UserService.class
+com\mycompany\usermsa\model\UserModel.class
+com\mycompany\usermsa\config\Producers.class
+com\mycompany\usermsa\service\ExampleService.class
+com\mycompany\usermsa\service\HealthCheckService.class
+com\mycompany\usermsa\config\CrossOriginResourceSharingFilter.class
+com\mycompany\usermsa\config\BootStrap.class
+com\mycompany\usermsa\entity\Usercategorytb_.class
+com\mycompany\usermsa\entity\Usertb.class

@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:body>
+
+        <ui:composition template="./Template.xhtml">
+
+            <ui:define name="content">
+                ${businessBean.getBusinessDetails()}
+                <div class="content-wrapper" style="color:black !important;">
+                    <div class="card card-default" id="cardDemo14">
+                        <div class="card-header card-title">
+                            Manage Business Details
+                        </div>
+                        <div class="card-body">
+                            
+                            
+                            <c:if test="${businessBean.business.isVerified == 0}">
+                                <b:row>
+                                    <b:column>
+                                        <b:alert severity="danger" title="Be sure!" />
+                                    </b:column>
+                                </b:row>
+                            </c:if>
+                            <c:if test="${businessBean.business.isVerified == 1}">
+                                <b:row>
+                                    <b:column>
+                                        <b:alert severity="info" title="Little patience!" />
+                                    </b:column>
+                                </b:row>
+                            </c:if>
+                            
+                            <h:form>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText 
+                                                label="Business Name" 
+                                                required="true" requiredMessage="Business Name is required" 
+                                                placeholder="Business Name" value="${businessBean.business.businessName}" 
+                                            >
+                                                <f:ajax event="change" render="nmMessage" />
+                                            </b:inputText>
+                                            <b:message style="danger" id="nmMessage" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText 
+                                                value="${businessBean.business.emailID}" label="Email Address"
+                                                validator="emailAjaxValidator" validatorMessage="Email Address is not valid" 
+                                                required="true" requiredMessage="Email Address is valid"
+                                                placeholder="Business Email" id="bEmail" >
+                                                <f:ajax event="change" render="bEmailMessage" />
+                                            </b:inputText>
+                                            <b:message style="danger" id="bEmailMessage" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText 
+                                                value="${businessBean.business.customerCarePhoneNo}"  label="Customer care no."
+                                                validatorMessage="Phone number is not valid" validator="phoneValidator"
+                                                placeholder="999-999-9999" id="cutNo" 
+                                            >
+                                                <f:ajax event="change" render="cutNoMessage" />
+                                            </b:inputText>
+                                            <b:message style="danger" id="cutNoMessage" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText 
+                                                value="${businessBean.business.reservationPhoneNo}"  label="Reservation no."
+                                                validatorMessage="Phone number is not valid" validator="phoneValidator"
+                                                placeholder="999-999-9999" id="resNo" 
+                                            >
+                                                <f:ajax event="change" render="resNoMessage" />
+                                            </b:inputText>
+                                            <b:message style="danger" id="resNoMessage" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:selectMultiMenu id="validOn" label="Valid On"
+                                                value="${businessBean.business.daysOfOperation}" 
+                                                required="true" requiredMessage="Please select valid days.">
+                                                <f:selectItem itemValue="Mon" itemLabel="Monday" />
+                                                <f:selectItem itemValue="Tue" itemLabel="Tuesday" />
+                                                <f:selectItem itemValue="Wed" itemLabel="Wednesday" />
+                                                <f:selectItem itemValue="Thu" itemLabel="Thursday" />
+                                                <f:selectItem itemValue="Fri" itemLabel="Friday" />
+                                                <f:selectItem itemValue="Sat" itemLabel="Saturday" />
+                                                <f:selectItem itemValue="Sun" itemLabel="Sunday" />
+                                            </b:selectMultiMenu>
+                                            <b:message for="validOn" errorClass="true" />
+                                            <!-- 
+                                            update="@form"
+                                            value="#buttonGroupsBean.contentDisabled}"
+                                             onchange="ajax:buttonGroupsBean.onChange()"
+                                            <label>Days of Operation</label>
+                                            <h:inputText value="" pt:placeholder="Mon,Tue,Wed,Thus,Fri,Sat,Sun" class="form-control" />-->
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText placeholder="8:30 AM - 10:30 PM" label="Hours of Operation"
+                                                value="${businessBean.business.hoursOfOperation}"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputTextarea label="Address"
+                                             value="${businessBean.business.address}" placeholder="305, nandan society, minibazar, Nr. petrol pump, surat" 
+                                             required="true" requiredMessage="Address is required" id="addr"
+                                            >
+                                                <f:ajax event="change" render="addrMessage" />
+                                            </b:inputTextarea>
+                                            <b:message id="addrMessage" errorClass="true" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputTextarea label="Awards &amp; Recognition"
+                                                value="${businessBean.business.awardsRecognition}" placeholder="Awards &amp; Recognitions" 
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText placeholder="Bank Name" label="Bank Name" value="${businessBean.business.bankName}"
+                                                         required="true" requiredMessage="Bank Name is required." id="bnm" >
+                                                <f:ajax event="change" render="bnmMessage" />
+                                                <f:ajax event="blur" render="bnmMessage" />
+                                            </b:inputText>
+                                            <b:message id="bnmMessage" errorClass="true" for="bnm" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <b:inputText placeholder="Bank Account No" label="Bank Account No" value="${businessBean.business.bankAccountNo}"
+                                                         required="true" requiredMessage="Account Number is required." id="bac" >
+                                                <f:ajax event="change" render="bacMessage" />
+                                                <f:ajax event="blur" render="bacMessage" />
+                                            </b:inputText>
+                                            <b:message id="bacMessage" errorClass="true" for="bac" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <b:inputText placeholder="IFSC Code" label="IFSC Code" value="${businessBean.business.IFSCCode}"
+                                                     required="true" requiredMessage="IFSC Code is required." id="ifsc" >
+                                            <f:ajax event="change" render="ifscMessage" />
+                                            <f:ajax event="blur" render="ifscMessage" />
+                                        </b:inputText>
+                                        <b:message id="ifscMessage" errorClass="true" for="ifsc" />
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label>Store Category</label>
+                                            <h:inputText value="${businessBean.business.businessCategoryID.name}" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="form-group">
+                                            <label>Store Type</label>
+                                            <h:inputText value="${businessBean.business.businessTypeID.name}" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>State</label>
+                                            <h:inputText value="${businessBean.business.stateID.name}" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <h:inputText value="${businessBean.business.cityID.name}" disabled="true" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <b:commandButton actionListener="${businessBean.editBusiness()}" look="primary" value="Update" />
+                                        <b:commandButton actionListener="${businessBean.submitBusiness()}" 
+                                                         look="success" value="Submit" class="ml-3" 
+                                                         disabled="${businessBean.business.isVerified == 2}"
+                                                         />
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
